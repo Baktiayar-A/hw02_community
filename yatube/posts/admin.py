@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Group, Post
 
+
 class PostAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
