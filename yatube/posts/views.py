@@ -26,7 +26,7 @@ def group_posts(request, slug):
     template = 'posts/group_list.html'
     title = f"Записи сообщества {slug}"
     group = get_object_or_404(Group, slug=slug)
-    post_list = group.group_posts.select_related('group').all()
+    post_list = group.group.select_related('group').all()
     paginator = Paginator(post_list, settings.NUM_OF_POSTS)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -43,7 +43,7 @@ def profile(request, username):
     template = 'posts/profile.html'
     profile_name = get_object_or_404(User, username=username)
     title = f"Профайл пользователя {profile_name}"
-    post_list = profile_name.author_posts.select_related('author').all()
+    post_list = profile_name.posts.select_related('author').all()
     paginator = Paginator(post_list, settings.NUM_OF_POSTS)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -59,7 +59,7 @@ def profile(request, username):
 def post_detail(request, post_id):
     template = 'posts/post_detail.html'
     post = Post.objects.get(pk=post_id)
-    posts_count = post.author.author_posts.count()
+    posts_count = post.author.posts.count()
     title = f"Пост { post }"
     context = {
         'title': title,

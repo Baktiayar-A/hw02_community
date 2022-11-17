@@ -16,7 +16,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='author_posts',
+        related_name='posts',
         verbose_name="Автор",
         help_text="Выберите из списка"
     )
@@ -24,13 +24,13 @@ class Post(models.Model):
         "Group",
         models.SET_NULL,
         blank=True, null=True,
-        related_name='group_posts',
+        related_name='group',
         verbose_name="Группа",
         help_text="Выберите из списка"
     )
 
     class Meta:
-        ordering = ['-pub_date']
+        ordering = ('-pub_date',)
         verbose_name_plural = "Посты пользователей"
 
     def __str__(self):
