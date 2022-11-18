@@ -3,7 +3,6 @@
 {% block content %}
   <h1>{{ title }}</h1>
   {% for post in page_obj %}
-    {% if post.group %}<p>{{ post.group }}</p>{% endif %}
     <article>
       <ul>
         <li>Автор: {{ post.author.get_full_name }}</li>

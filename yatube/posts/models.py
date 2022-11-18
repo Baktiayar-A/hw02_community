@@ -24,7 +24,7 @@ class Post(models.Model):
         "Group",
         models.SET_NULL,
         blank=True, null=True,
-        related_name='group',
+        related_name='posts',
         verbose_name="Группа",
         help_text="Выберите из списка"
     )
