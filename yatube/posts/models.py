@@ -45,8 +45,6 @@ class Group(models.Model):
     )
     slug = models.SlugField(
         unique=True,
-        blank=True,
-        null=True,
         verbose_name="URL",
         help_text="URL Адресc группы"
     )
